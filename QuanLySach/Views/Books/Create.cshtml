@@ -1,0 +1,118 @@
+@model QuanLySach.Models.Book
+
+@{
+    ViewData["Title"] = "Thêm sách";
+}
+
+<div class="container">
+
+    <h1>Thêm sách mới</h1>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <form asp-action="Create">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Title"
+                           class="form-label">
+                        Tên sách
+                    </label>
+
+                    <input asp-for="Title"
+                           class="form-control"
+                           placeholder="Nhập tên sách" />
+
+                    <span asp-validation-for="Title"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Author"
+                           class="form-label">
+                        Tác giả
+                    </label>
+
+                    <input asp-for="Author"
+                           class="form-control"
+                           placeholder="Nhập tên tác giả" />
+
+                    <span asp-validation-for="Author"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Publisher"
+                           class="form-label">
+                        Nhà xuất bản
+                    </label>
+
+                    <input asp-for="Publisher"
+                           class="form-control"
+                           placeholder="Nhập nhà xuất bản" />
+
+                    <span asp-validation-for="Publisher"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Price"
+                           class="form-label">
+                        Giá sách
+                    </label>
+
+                    <input asp-for="Price"
+                           class="form-control"
+                           placeholder="Nhập giá sách" />
+
+                    <span asp-validation-for="Price"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PublishedYear"
+                           class="form-label">
+                        Năm xuất bản
+                    </label>
+
+                    <input asp-for="PublishedYear"
+                           class="form-control"
+                           placeholder="Nhập năm xuất bản" />
+
+                    <span asp-validation-for="PublishedYear"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Thêm sách
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Quay lại danh sách
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

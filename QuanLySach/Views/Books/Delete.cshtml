@@ -1,0 +1,81 @@
+@model QuanLySach.Models.Book
+
+@{
+    ViewData["Title"] = "Xóa sách";
+}
+
+<div class="container">
+
+    <h1>Xóa sách</h1>
+
+    <div class="alert alert-danger">
+        <strong>Bạn có chắc chắn muốn xóa cuốn sách này không?</strong>
+        <br />
+        Hành động này không thể hoàn tác.
+    </div>
+
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            Mã sách
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Id
+        </dd>
+
+        <dt class="col-sm-3">
+            Tên sách
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Title
+        </dd>
+
+        <dt class="col-sm-3">
+            Tác giả
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Author
+        </dd>
+
+        <dt class="col-sm-3">
+            Nhà xuất bản
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Publisher
+        </dd>
+
+        <dt class="col-sm-3">
+            Giá sách
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Price.ToString("N0") VNĐ
+        </dd>
+
+        <dt class="col-sm-3">
+            Năm xuất bản
+        </dt>
+        <dd class="col-sm-9">
+            @Model.PublishedYear
+        </dd>
+
+    </dl>
+
+    <form asp-action="Delete">
+
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit"
+                class="btn btn-danger">
+            Xác nhận xóa
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Hủy
+        </a>
+
+    </form>
+
+</div>

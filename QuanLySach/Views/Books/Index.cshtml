@@ -1,0 +1,95 @@
+@model IEnumerable<QuanLySach.Models.Book>
+
+@{
+    ViewData["Title"] = "Quản lý sách";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Quản lý sách</h1>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Thêm sách mới
+        </a>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped table-hover">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Mã sách</th>
+                        <th>Tên sách</th>
+                        <th>Tác giả</th>
+                        <th>Nhà xuất bản</th>
+                        <th>Giá</th>
+                        <th>Năm xuất bản</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{
+                        int stt = 1;
+                    }
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@stt</td>
+
+                            <td>@item.Title</td>
+
+                            <td>@item.Author</td>
+
+                            <td>@item.Publisher</td>
+
+                            <td>
+                                @item.Price.ToString("N0") VNĐ
+                            </td>
+
+                            <td>@item.PublishedYear</td>
+
+                            <td>
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-warning btn-sm">
+                                    Sửa
+                                </a>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-info btn-sm">
+                                    Chi tiết
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-danger btn-sm">
+                                    Xóa
+                                </a>
+                            </td>
+                        </tr>
+
+                        @{
+                            stt++;
+                        }
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Chưa có sách nào trong hệ thống.
+        </div>
+    }
+
+</div>
