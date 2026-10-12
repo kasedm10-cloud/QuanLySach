@@ -25,5 +25,8 @@ namespace QuanLySach.Models
         [Range(1900, 2100, ErrorMessage = "Năm xuất bản không hợp lệ")]
         [Display(Name = "Năm xuất bản")]
         public int PublishedYear { get; set; }
+
+        [Display(Name = "Hình ảnh")]
+        public string? ImageUrl { get; set; }
     }
 }

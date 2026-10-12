@@ -19,6 +19,14 @@
             @Model.Id
         </dd>
 
+        <dt class="col-sm-3">Ảnh bìa</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="Ảnh bìa @Model.Title" style="max-width: 220px; max-height: 300px; object-fit: contain;" />
+            }
+        </dd>
+
         <dt class="col-sm-3">
             Tên sách
         </dt>

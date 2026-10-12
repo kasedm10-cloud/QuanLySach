@@ -23,6 +23,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th>Mã sách</th>
+                        <th>Ảnh bìa</th>
                         <th>Tên sách</th>
                         <th>Tác giả</th>
                         <th>Nhà xuất bản</th>
@@ -33,14 +34,17 @@
                 </thead>
 
                 <tbody>
-                    @{
-                        int stt = 1;
-                    }
-
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@stt</td>
+                            <td>@item.Id</td>
+
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                {
+                                    <img src="@item.ImageUrl" alt="Ảnh bìa @item.Title" style="width: 55px; height: 75px; object-fit: cover;" />
+                                }
+                            </td>
 
                             <td>@item.Title</td>
 
@@ -74,10 +78,6 @@
                                 </a>
                             </td>
                         </tr>
-
-                        @{
-                            stt++;
-                        }
                     }
                 </tbody>
 

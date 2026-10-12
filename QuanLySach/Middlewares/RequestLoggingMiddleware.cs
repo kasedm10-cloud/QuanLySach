@@ -13,16 +13,16 @@ namespace QuanLySach.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            // Lấy thời gian hiện tại, có milliseconds
+            // Lấy thời gian hiện tại
             var time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
             // Lấy phương thức HTTP
             var method = context.Request.Method;
 
-            // Lấy URL người dùng truy cập
+            // Lấy đường dẫn
             var path = context.Request.Path;
 
-            // Ghi log trước khi request đi vào Controller
+            // Log trước khi vào Controller
             Console.WriteLine(
                 $"[{time}] Method: {method} - Path: {path}"
             );
@@ -36,7 +36,7 @@ namespace QuanLySach.Middlewares
                 {
                     if (int.TryParse(segments[3], out int id))
                     {
-                        // Nếu ID <= 0 thì chặn request
+                        // ID <= 0 thì chặn
                         if (id <= 0)
                         {
                             context.Response.StatusCode = 400;
@@ -55,10 +55,10 @@ namespace QuanLySach.Middlewares
                 }
             }
 
-            // Cho request đi tiếp vào Controller
+            // Cho request đi tiếp
             await _next(context);
 
-            // Ghi Status Code sau khi Controller xử lý xong
+            // Log Status Code sau khi Controller xử lý
             Console.WriteLine(
                 $"Status Code: {context.Response.StatusCode}"
             );

@@ -13,10 +13,17 @@
     <div class="row">
         <div class="col-md-6">
 
-            <form asp-action="Create">
+            <form asp-action="Create" enctype="multipart/form-data">
 
                 <div asp-validation-summary="ModelOnly"
                      class="text-danger">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Ảnh bìa sách</label>
+                    <input type="file" id="image" name="image" class="form-control" accept=".jpg,.jpeg,.png" required />
+                    <div class="form-text">Chọn ảnh JPG hoặc PNG, tối đa 5MB.</div>
+                    <span class="text-danger">@Html.ValidationMessage("image")</span>
                 </div>
 
                 <div class="mb-3">
